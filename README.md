@@ -2,7 +2,7 @@
 
 A full-stack web application that dynamically visualizes how different sorting algorithms operate in real-time. Built with a **Spring Boot (Java)** REST API engine to handle complex algorithmic math and an **Angular** frontend to render smooth, step-by-step CSS animations.
 
-![Determined to Code](https://paulvanderlaken.com/wp-content/uploads/2017/10/qvrpgnc.gif)
+![Determined to Code](https://miro.medium.com/v2/resize:fit:560/format:webp/1*4WTCQ27VSG7RPlQTWh0Amg.gif)
 
 
 ## ✨ Features
