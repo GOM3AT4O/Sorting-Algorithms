@@ -60,4 +60,5 @@ mvn clean spring-boot:run
 Open a terminal, navigate to the `visualizer-ui` folder, and run:
 ```bash
 cd visualizer-ui
+install npm 
 ng serve
