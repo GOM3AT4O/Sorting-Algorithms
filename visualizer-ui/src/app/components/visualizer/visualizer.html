@@ -1,0 +1,8 @@
+<div class="visualizer-container">
+  <div *ngFor="let value of array; let i = index" 
+       class="array-bar"
+       [style.height.%]="getHeight(value)"
+       [class.active]="i === activeBar1 || i === activeBar2"
+       [class.sorted]="isSorted">
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<div class="comparison-container">
+
+  <div class="comparison-controls">
+
+    <div class="control-group">
+      <label>Algorithms:</label>
+      <div class="checkbox-group">
+        <label *ngFor="let algo of algorithms" class="checkbox-label">
+          <input type="checkbox" [checked]="isSelected(algo)" (change)="toggleAlgorithm(algo)">
+          {{ algo }}
+        </label>
+      </div>
+    </div>
+
+    <div class="control-group">
+      <label for="compSize">Array Size: <strong>{{ arraySize }}</strong></label>
+      <input type="range" id="compSize" min="10" max="10000" step="10"
+        [(ngModel)]="arraySize" [disabled]="isLoading || useFiles">
+    </div>
+
+    <div class="control-group">
+      <label for="runs">Number of Runs: <strong>{{ numberOfRuns }}</strong></label>
+      <input type="range" id="runs" min="1" max="20" step="1"
+        [(ngModel)]="numberOfRuns" [disabled]="isLoading">
+    </div>
+
+    <!-- ✅ MOVED: file upload inside the controls div -->
+    <div class="control-group">
+      <label>Load Files (optional):</label>
+      <label class="file-upload-btn">
+        📂 Choose Files
+        <input type="file" accept=".txt" multiple (change)="onFilesUpload($event)" [disabled]="isLoading" hidden>
+      </label>
+      <div *ngIf="uploadedFiles.length > 0" class="file-list">
+        <div *ngFor="let f of uploadedFiles; let i = index" class="file-tag">
+          <span>✅ {{ f.name }}</span>
+          <span class="file-count">({{ f.array.length }} elements)</span>
+          <button class="btn-remove-file" (click)="removeFile(i)">✕</button>
+        </div>
+        <button class="btn-clear" (click)="clearFiles()">Clear All</button>
+      </div>
+      <small *ngIf="useFiles" style="color: #4ade80; margin-top: 0.3rem; display:block">
+        ✅ {{ uploadedFiles.length }} file(s) loaded — array type/size ignored
+      </small>
+      <small *ngIf="!useFiles" style="color: #aaa; margin-top: 0.3rem; display:block">
+        No files loaded — using array type and size settings
+      </small>
+    </div>
+
+    <button class="btn-run" (click)="runComparison()" [disabled]="isLoading">
+      {{ isLoading ? 'Running...' : 'Run Comparison' }}
+    </button>
+
+  </div>
+
+  <div class="loading" *ngIf="isLoading">
+    ⏳ {{ progress || 'Starting...' }}
+  </div>
+
+  <div class="table-wrapper" *ngIf="results.length > 0 && !isLoading">
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Algorithm</th>
+          <th>Array Type</th>
+          <th>Array Size</th>
+          <th>Runs</th>
+          <th>Avg Runtime</th>
+          <th>Min Runtime</th>
+          <th>Max Runtime</th>
+          <th>Comparisons</th>
+          <th>Interchanges</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let r of results">
+          <td>{{ r.algorithmName }}</td>
+          <td>{{ r.arrayGenerationMode }}</td>
+          <td>{{ r.arraySize }}</td>
+          <td>{{ r.numberOfRuns }}</td>
+          <td>{{ formatTime(r.averageExecutionTime) }}</td>
+          <td>{{ formatTime(r.minRunTime) }}</td>
+          <td>{{ formatTime(r.maxRunTime) }}</td>
+          <td>{{ r.numberOfComparisons | number }}</td>
+          <td>{{ r.numberOfInterchanges | number }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

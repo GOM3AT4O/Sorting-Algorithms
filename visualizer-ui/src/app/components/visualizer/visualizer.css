@@ -1,0 +1,27 @@
+.visualizer-container {
+  display: flex;
+  align-items: flex-end; /* This pushes all the bars to the bottom */
+  justify-content: center;
+  height: 60vh; /* Takes up 60% of the screen height */
+  width: 100%;
+  padding: 40px 20px;
+  background-color: #ecf0f1;
+  gap: 2px; /* The tiny space between the bars */
+  box-sizing: border-box;
+}
+
+.array-bar {
+  flex: 1; /* This makes all bars share the horizontal space equally! */
+  background-color: #3498db; /* Default Blue */
+  border-radius: 4px 4px 0 0; /* Rounds the top corners */
+}
+
+/* This class gets applied dynamically when the backend says these indexes are active */
+.array-bar.active {
+  background-color: #e74c3c; /* Alert Red */
+}
+
+/* This class gets applied when the sorting is 100% finished */
+.array-bar.sorted {
+  background-color: #2ecc71; /* Success Green */
+}

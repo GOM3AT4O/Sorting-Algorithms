@@ -1,0 +1,152 @@
+.comparison-container {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.comparison-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-end;
+  background: #1a252f;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+}
+
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  color: white;
+  cursor: pointer;
+}
+
+.btn-run {
+  background-color: #4ade80;
+  color: #1a252f;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1rem;
+  height: fit-content;
+}
+
+.btn-run:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.loading {
+  text-align: center;
+  font-size: 1.1rem;
+  color: #555;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.comparison-table th {
+  background-color: #1a252f;
+  color: #4ade80;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.comparison-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  white-space: nowrap;
+}
+
+.comparison-table tbody tr:hover {
+  background-color: #f0f4f8;
+}
+
+.file-upload-btn {
+  display: inline-block;
+  background-color: #2e4057;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  border: 1px dashed #4ade80;
+}
+
+.file-upload-btn:hover {
+  background-color: #3a5068;
+}
+
+.file-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+/* ✅ FIXED: removed duplicate, kept the better version */
+.file-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #2e4057;
+  color: #4ade80;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.file-count {
+  color: #aaa;
+}
+
+.file-name {
+  color: #4ade80;
+  font-size: 0.8rem;
+}
+
+.btn-clear {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.8rem;
+}
+
+.btn-remove-file {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.75rem;
+}

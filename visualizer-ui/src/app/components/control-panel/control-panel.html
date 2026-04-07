@@ -1,0 +1,47 @@
+<div class="control-panel">
+  <div class="form-group">
+    <label for="algorithm">Algorithm:</label>
+    <select id="algorithm" [(ngModel)]="selectedAlgorithm" [disabled]="isSorting">
+      <option *ngFor="let algo of algorithms" [value]="algo">{{ algo }}</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="arrayType">Array Type:</label>
+    <select id="arrayType" [(ngModel)]="selectedArrayType" [disabled]="isSorting">
+      <option *ngFor="let type of arrayTypes" [value]="type">{{ type | titlecase }}</option>
+    </select>
+  </div>
+
+  <div class="control-group">
+    <label for="sizeSlider">Size: {{ arraySize }}</label>
+    <input type="range" id="sizeSlider" min="10" max="100" step="1"
+      [(ngModel)]="arraySize" [disabled]="isSorting">
+  </div>
+
+  <div class="control-group">
+    <label for="speedSlider">Speed: {{ visualizationSpeed }}</label>
+    <input type="range" id="speedSlider" min="1" max="20" step="1"
+      [(ngModel)]="visualizationSpeed"
+      (ngModelChange)="onSpeedChange()">
+  </div>
+
+  <div class="control-group">
+    <label>Load from File:</label>
+    <label class="file-upload-btn">
+      📂 Choose File
+      <input type="file" accept=".txt" (change)="onFileUpload($event)" [disabled]="isSorting" hidden>
+    </label>
+    <!-- ✅ ADD: rich feedback instead of just file name -->
+    <div *ngIf="loadedFileName" class="file-feedback">
+      <span class="file-name">✅ {{ loadedFileName }}</span>
+      <span class="file-size">({{ arraySize }} elements)</span>
+      <button class="btn-clear-file" (click)="clearFile()">✕</button>
+    </div>
+  </div>
+
+  <div class="button-group">
+    <button class="btn-generate" (click)="onGenerate()">Generate New Array</button>
+    <button class="btn-sort" (click)="onSort()" [disabled]="isSorting">Sort!</button>
+  </div>
+</div>

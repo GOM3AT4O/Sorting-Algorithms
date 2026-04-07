@@ -1,0 +1,41 @@
+<main class="app-container">
+  <header>
+    <h1>Sorting Algorithm Visualizer</h1>
+    <div class="mode-toggle">
+      <button (click)="toggleMode()">
+        {{ mode === 'visualization' ? 'Switch to Comparison Mode' : 'Switch to Visualization Mode' }}
+      </button>
+    </div>
+  </header>
+
+  <!-- Visualization Mode -->
+  <ng-container *ngIf="mode === 'visualization'">
+    <app-control-panel
+      [isSorting]="isSorting"
+      (generateEvent)="onGenerate($event)"
+      (sortEvent)="onSort($event)"
+      (speedChangeEvent)="onSpeedChange($event)"
+      (fileLoadedEvent)="onFileLoaded($event)">
+    </app-control-panel>
+
+    <app-visualizer
+      [array]="currentArray"
+      [activeBar1]="activeBar1"
+      [activeBar2]="activeBar2"
+      [isSorted]="isSorted">
+    </app-visualizer>
+
+    <div class="sort-stats" *ngIf="isSorted">
+      <span>GOM3AT4U got you Sorted! ✅</span>
+      <span>Comparisons: <strong>{{ totalComparisons }}</strong></span>
+      <span>Interchanges: <strong>{{ totalInterchanges }}</strong></span>
+      <span>GOOD FOR US!!</span>
+    </div>
+  </ng-container>
+
+  <!-- Comparison Mode -->
+  <ng-container *ngIf="mode === 'comparison'">
+    <app-comparison-table></app-comparison-table>
+  </ng-container>
+
+</main>
